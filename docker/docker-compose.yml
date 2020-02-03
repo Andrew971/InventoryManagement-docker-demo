@@ -6,9 +6,21 @@ services:
     user: "node"
     image: ea-blog-review-api:latest
     container_name: ea-blog-review.api
+    links:
+      - mongo:database
+    depends_on:
+    - mongo
     networks:
       - ea-blog-review
-    
-
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
+    networks:
+      - ea-blog-review
+    volumes:
+    - mongodb-PesistStore:/data/db
+volumes:
+  mongodb-PesistStore:
 networks:
   ea-blog-review:

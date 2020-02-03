@@ -1,16 +1,14 @@
 FROM node:12
+
 WORKDIR /usr/app
 
 COPY package*.json ./
 
 RUN yarn --pure-lockfile --no-progress && yarn cache clean
-# RUN mkdir ./logs
+
 COPY . /usr/app
-HEALTHCHECK --interval=30s CMD node healthcheck.js
-RUN yarn build
-RUN yarn test
 
 EXPOSE $PORT
 ENV PORT $PORT
 ENV NODE_ENV $NODE_ENV
-CMD yarn start
+CMD yarn dev-test

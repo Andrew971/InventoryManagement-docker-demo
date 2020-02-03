@@ -3,8 +3,17 @@ import express from 'express'
 import { Request, Response } from 'express'
 import logger from 'morgan'
 import path from 'path'
-import BaseRouter from './Controlers'
+import BaseRouter from './routes'
+import connect from './dbConnection'
+const NODE_ENV = process.env.NODE_ENV
 
+if(NODE_ENV !== 'test'){
+  connect({
+    host: 'mongodb://mongo:27017',
+    database: 'tree-demo',
+    env: NODE_ENV || 'development'
+  })
+}
 // Init express
 const app = express()
 
@@ -15,16 +24,13 @@ app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 
 app.use('/api', BaseRouter)
+
 app.get('/healthcheck', (req, res) => {
   res.status(500).send('I am happy and healthy\n')
 });
 
-const viewsDir = path.join(__dirname, 'views')
-app.set('views', viewsDir)
-const staticDir = path.join(__dirname, 'public')
-app.use(express.static(staticDir))
-app.get('*', (req: Request, res: Response) => {
-    res.sendFile('index.html', {root: viewsDir})
+app.get('/', (req: Request, res: Response) => {
+    res.send('I am happy and healthy\n')
 });
 
 // Export express instance

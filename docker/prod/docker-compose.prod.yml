@@ -9,18 +9,20 @@ services:
       NODE_ENV: production
       PORT: 8080
     restart: always
+    command: yarn start
+    tty: true
+    stdin_open: true
     expose: 
       - "8080"
     build:
       context: ../.
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/prod/Dockerfile
       args:
         - NODE_ENV=production
-    command: npm start
     volumes:
-      - .:/usr/app:delegated
+      - ../.:/usr/app
       - /usr/app/node_modules
-    working_dir: /app
+    working_dir: /usr/app
     healthcheck:
       disable: false
 

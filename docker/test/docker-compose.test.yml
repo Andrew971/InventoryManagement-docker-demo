@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+
+  api:
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: test
+      PORT: 3000
+    restart: always
+    command: yarn dev-test
+    tty: true
+    stdin_open: true
+    expose: 
+      - "3000"
+    build:
+      context: ../.
+      dockerfile: ./docker/dev/Dockerfile
+      args:
+        - NODE_ENV=test
+    volumes:
+      - ../.:/usr/app
+      - /usr/app/node_modules
+    working_dir: /usr/app
+    healthcheck:
+      disable: true
+

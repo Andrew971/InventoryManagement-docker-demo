@@ -8,7 +8,6 @@ RUN yarn --pure-lockfile --no-progress && yarn cache clean
 COPY . /usr/app
 HEALTHCHECK --interval=30s CMD node healthcheck.js
 RUN yarn build
-RUN yarn test
 
 EXPOSE $PORT
 ENV PORT $PORT

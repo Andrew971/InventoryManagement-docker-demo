@@ -1,4 +1,4 @@
-PROJNAME := ea-blog-review
+PROJNAME := tree-demo
 
 export: images/api.tar
 
@@ -12,14 +12,37 @@ images/%.tar: $(wildcard docker/$(basename $(notdir $@))/**) \
 up: 
 	docker-compose --project-name $(PROJNAME) \
 								-f ./docker/docker-compose.yml down && \
-	docker volume create nodemodules && \
 	docker-compose --project-name $(PROJNAME) \
 								-f ./docker/docker-compose.yml \
-								-f ./docker/docker-compose.prod.yml \
+								-f ./docker/prod/docker-compose.prod.yml \
 								build --pull --no-cache && \
 	docker-compose --project-name $(PROJNAME) \
 								-f ./docker/docker-compose.yml \
-								-f ./docker/docker-compose.prod.yml \
+								-f ./docker/prod/docker-compose.prod.yml \
+								up --no-deps 
+dev: 
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml \
+								-f ./docker/dev/docker-compose.dev.yml \
+								down && \
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml \
+								-f ./docker/dev/docker-compose.dev.yml \
+								build --pull --no-cache && \
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml \
+								-f ./docker/dev/docker-compose.dev.yml \
+								up --no-deps 
+test: 
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml down && \
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml \
+								-f ./docker/test/docker-compose.test.yml \
+								build --pull --no-cache && \
+	docker-compose --project-name $(PROJNAME) \
+								-f ./docker/docker-compose.yml \
+								-f ./docker/test/docker-compose.test.yml \
 								up --no-deps 
 
 clean:

@@ -5,7 +5,7 @@ const { File, Console } = transports;
 
 // Init Logger
 const winstonLogger = createLogger({
-    level: 'info',
+    level: 'info'
 });
 
 /**
@@ -17,16 +17,16 @@ if (process.env.NODE_ENV === 'production') {
 
     const fileFormat = format.combine(
         format.timestamp(),
-        format.json(),
+        format.json()
     );
     const errTransport = new File({
         filename: './logs/error.log',
         format: fileFormat,
-        level: 'error',
+        level: 'error'
     });
     const infoTransport = new File({
         filename: './logs/combined.log',
-        format: fileFormat,
+        format: fileFormat
     });
     winstonLogger.add(errTransport);
     winstonLogger.add(infoTransport);

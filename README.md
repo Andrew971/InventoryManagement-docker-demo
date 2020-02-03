@@ -11,7 +11,7 @@
 
 - Docker (>= 19.03.5)
 
-### Running in local machine
+### Running Production environement 
 
 Just run with `make up`.
 
@@ -24,24 +24,30 @@ Just run with `make up`.
 
 ## Acceptance Criteria
 
-- [] ~~A blog post will show a title, article text (plain text) and an author name~~
-- [] ~~Comments are made on blog posts and show comment text (plain text) and an
-  author name~~
 
-## Non-functional Requirements
+## developing
 
-- [] ~~The code should be production ready and could be supported by a team~~
-- [X] ~~The application must have a build system~~
-  - [X] ~~The application build should be built or compiled in a docker container~~
-  - [X] ~~The application build should produce a docker container image as an artifact~~
-  - [] ~~The application should not have any runtime dependencies~~
-
-
+Just run `make dev`.
+run in browser : 
+  localhost:3000 (for Api)
+connect to Mongodb: 
+  localhost:27017
+  database: tree-demo-development 
 ## Testing
 
-Just run `make test`.
+Just run `make dev`.
+connect to Mongodb: 
+  localhost:27017
+  database: tree-demo-test 
+  
+## Production
 
-Note: only E2E testing is currectly available.
+Just run `make up`.
+run in browser : 
+  localhost:8080 (for Api)
+connect to Mongodb: 
+  localhost:27017
+  database: tree-demo
 
 ## Tasks
 
@@ -56,7 +62,11 @@ Note: only E2E testing is currectly available.
 
 - [X] ~~Backend Skeleton~~
   - [X] ~~ Mock database structure~~
-  - [x] ~~ HTTP Endpoint (Blog and Comment endpoint) ~~
+  - [x] ~~ HTTP Endpoint (Order and Inventory endpoint) ~~
   - [x] ~~Integration of database ~~
-  - [] ~~ E2E Test integration (mocha, chai)~~
-  - [-] ~~ Documentation ( Swagger UI, added simple Api Doc at ./apiDoc.yaml )~~
+  - [-] ~~ Stream Event after Order Placement (increasing and decreasing
+    inventory) ~~
+  - [-] ~~ Other endpoint implementation ~~
+  - [-] ~~ E2E Test integration (mocha, chai)~~
+  - [-] ~~ Cleaning code ~~
+  - [-] ~~ Documentation ~~

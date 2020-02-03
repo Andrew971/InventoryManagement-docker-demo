@@ -1,6 +1,6 @@
 {
-  "watch": ["spec"],
+  "watch": ["tests"],
   "ext": "spec.ts",
   "ignore": ["spec/support"],
-  "exec": "ts-node -r tsconfig-paths/register ./spec"
+  "exec": "NODE_ENV=test mocha -r ts-node/register tests/**/*.spec.ts"
 }

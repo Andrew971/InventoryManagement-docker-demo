@@ -8,21 +8,10 @@
     "module": "commonjs",
     "outDir": "dist",
     "removeComments": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": true,
     "target": "ES2020",
     "moduleResolution": "node",
-    // "paths": {
-    //   "@server": [
-    //     "src/Server"
-    //   ],
-    //   "@utils": [
-    //     "src/utils"
-    //   ],
-    //   "@app": [
-    //     "src/index"
-    //   ]
-    // },
     "paths": {
       "*": [
           "node_modules/*",
@@ -38,7 +27,7 @@
   },
   "include": [
     "src/**/*",
-    "spec/**/*.ts"
+    "tests/**/*.spec.ts"
   ],
   "exclude": [
     "src/public/"
