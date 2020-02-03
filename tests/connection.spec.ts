@@ -5,7 +5,7 @@ const NODE_ENV = process.env.NODE_ENV
 
 before('establishing connection to database', (done: any) => {
   const host = 'mongodb://mongo:27017'
-  const database = 'tree-demo'
+  const database = 'Treez-demo'
   const env = NODE_ENV || 'development'
   logger.info(`env:  ${env}`)
   const isProduction = env === 'production'

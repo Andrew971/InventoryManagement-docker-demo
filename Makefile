@@ -1,4 +1,4 @@
-PROJNAME := tree-demo
+PROJNAME := Treez-demo
 
 export: images/api.tar
 

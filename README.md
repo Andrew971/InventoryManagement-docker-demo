@@ -32,14 +32,14 @@ run in browser :
   localhost:3000 (for Api)
 connect to Mongodb: 
   localhost:27017
-  database: tree-demo-development 
+  database: Treez-demo-development 
 ## Testing
 
 Just run `make dev`.
 connect to Mongodb: 
   localhost:27017
-  database: tree-demo-test 
-  
+  database: Treez-demo-test 
+
 ## Production
 
 Just run `make up`.
@@ -47,7 +47,7 @@ run in browser :
   localhost:8080 (for Api)
 connect to Mongodb: 
   localhost:27017
-  database: tree-demo
+  database: Treez-demo
 
 ## Tasks
 

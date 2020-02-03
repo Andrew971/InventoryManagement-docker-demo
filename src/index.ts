@@ -10,7 +10,7 @@ const NODE_ENV = process.env.NODE_ENV
 if(NODE_ENV !== 'test'){
   connect({
     host: 'mongodb://mongo:27017',
-    database: 'tree-demo',
+    database: 'Treez-demo',
     env: NODE_ENV || 'development'
   })
 }
